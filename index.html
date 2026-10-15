@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Elevare">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#101B26">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEE0lEQVR4nO3cPa7rZBSG0VzEAOjpgYaGQdAwE1okBoFEy0xoGAQNDcyGIhIKJ3ljxz9721/WKrkXXf882cd2vuNPX3z51QUe+ax7AzgucRCJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImDSBxE4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIPq8ewMuP/76T/cmHNdvP33d+K9/anzVpCxm6kqkJw5ZLFCfSMM1hzKWqT9u1XEoY43io1cahzLWqzyGbmWJ6uIwNrZSdiRNDqKiOIyNbdUcT5ODSBxE4iASB5E4iMRBVBRH77qE8dQcT5ODqC4Ow2MrZUfS5CAqjcPwWK/yGFZPDn2sUXz0Gn6s6GOZ+uNm9fkJvNfq81sSeeJ9f2+Fg3MrSyQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImDSBxE4iDqfw/p33/92b0J2/jm2++6N2Fjnes5hsni1kiJ9MQxZBa3xkik4Zpj+DIuo+xjdRxjHLU5BtjT0jgGOF4vOfv+upUlqovj7B+jZU691yYHUVEcp/4ArXTefTc5iMRBJA4icRCJg0gcREVxjPEt5TLn3XeTg6gujvN+gNY49V6bHESlcZz6Y7TA2fe3enKc/XjNN8CeNvxYGeCoTRpjH60+39gYWVz1v2pymERGyuKqPw4Oy60skTiIxEEkDiJxEImDSBxE4iDqf7PPO/vhj5/TH/3+/S+VW/KQJ6QNnjRxr7EScZR6KYtbLYm45qizuIyV/+9iJkeFDU9t5QgxOXa37Ye+coT0T45DrefYfE3GTueyZn5YCfbAVons+ikv6KPnOcdhs7i6bt54K7te5T2k0crt3HZs3M+JgosP7yF9ZvHW7lFGfR/eQzqhfZtvmyh+FOZWdnu7PtX48F92HR7eQzqta8sfzonK5xwmx5kUP0T3HtJZ5m//Vudv/uXnfsWYHEfUcuN6TxyHc4RlPlfiKDV54tsvQm+Jo056lvXhL3zQVcZFHGUmn2UdrYyLOGpMPss6YBkX7yGdaeX2PzzNz68/2su4mBxlnvRxkBvXe6WLfU76KOzVsbHyt1FeLWO/W1+To9RBRsJM3kM6oXhV6aHq8R7SZ5Zt7eSc3/Bbkl0fp3oPabTrdt53cKiZcWX1+QObZDHnZP/3uV9Wxt7fwvi9lf/Zdlr41YS1zvJT5g25ld3Rfh/umq/1xbGvPc5i2YIPcexu23NZuRSo/4L0fay8Pq1fIWZy1FlzdlvWDpocDbwTjGneJshZueYgEgeROIjEQSQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImDSBxE4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIjEQfQvyRghuJNPDfgAAAAASUVORK5CYII=">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAEE0lEQVR4nO3cPa7rZBSG0VzEAOjpgYaGQdAwE1okBoFEy0xoGAQNDcyGIhIKJ3ljxz9721/WKrkXXf882cd2vuNPX3z51QUe+ax7AzgucRCJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImDSBxE4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIjEQSQOInEQiYNIHETiIPq8ewMuP/76T/cmHNdvP33d+K9/anzVpCxm6kqkJw5ZLFCfSMM1hzKWqT9u1XEoY43io1cahzLWqzyGbmWJ6uIwNrZSdiRNDqKiOIyNbdUcT5ODSBxE4iASB5E4iMRBVBRH77qE8dQcT5ODqC4Ow2MrZUfS5CAqjcPwWK/yGFZPDn2sUXz0Gn6s6GOZ+uNm9fkJvNfq81sSeeJ9f2+Fg3MrSyQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImDSBxE4iDqfw/p33/92b0J2/jm2++6N2Fjnes5hsni1kiJ9MQxZBa3xkik4Zpj+DIuo+xjdRxjHLU5BtjT0jgGOF4vOfv+upUlqovj7B+jZU691yYHUVEcp/4ArXTefTc5iMRBJA4icRCJg0gcREVxjPEt5TLn3XeTg6gujvN+gNY49V6bHESlcZz6Y7TA2fe3enKc/XjNN8CeNvxYGeCoTRpjH60+39gYWVz1v2pymERGyuKqPw4Oy60skTiIxEEkDiJxEImDSBxE4iDqf7PPO/vhj5/TH/3+/S+VW/KQJ6QNnjRxr7EScZR6KYtbLYm45qizuIyV/+9iJkeFDU9t5QgxOXa37Ye+coT0T45DrefYfE3GTueyZn5YCfbAVons+ikv6KPnOcdhs7i6bt54K7te5T2k0crt3HZs3M+JgosP7yF9ZvHW7lFGfR/eQzqhfZtvmyh+FOZWdnu7PtX48F92HR7eQzqta8sfzonK5xwmx5kUP0T3HtJZ5m//Vudv/uXnfsWYHEfUcuN6TxyHc4RlPlfiKDV54tsvQm+Jo056lvXhL3zQVcZFHGUmn2UdrYyLOGpMPss6YBkX7yGdaeX2PzzNz68/2su4mBxlnvRxkBvXe6WLfU76KOzVsbHyt1FeLWO/W1+To9RBRsJM3kM6oXhV6aHq8R7SZ5Zt7eSc3/Bbkl0fp3oPabTrdt53cKiZcWX1+QObZDHnZP/3uV9Wxt7fwvi9lf/Zdlr41YS1zvJT5g25ld3Rfh/umq/1xbGvPc5i2YIPcexu23NZuRSo/4L0fay8Pq1fIWZy1FlzdlvWDpocDbwTjGneJshZueYgEgeROIjEQSQOInEQiYNIHETiIBIHkTiIxEEkDiJxEImDSBxE4iASB5E4iMRBJA4icRCJg0gcROIgEgeROIjEQfQvyRghuJNPDfgAAAAASUVORK5CYII=">
+<title>Controle Elevare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>
+/* Layout: caderno de professor em app de celular. Cabeçalho com mês, uma coluna de lista agrupada, navegação fixa embaixo com 3 abas. */
+:root {
+  --bg: #EDF0F3;
+  --surface: #FFFFFF;
+  --ink: #101B26;
+  --muted: #5B6877;
+  --line: #D5DBE2;
+  --track: #DCE2E9;
+  --accent: #1B5FD1;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E1EBFB;
+  --ok: #17724A;
+  --ok-bg: #DDF1E7;
+  --warn: #8F5200;
+  --warn-bg: #FBEBCF;
+  --bad: #B42328;
+  --bad-bg: #F9DEDD;
+  --scrim: rgba(10, 18, 28, 0.5);
+  --display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --body: 'Figtree', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C131B; --surface: #151F2A; --ink: #E8EEF4; --muted: #94A2B1; --line: #263341; --track: #263341;
+    --accent: #7AA8FF; --accent-ink: #06142B; --accent-soft: #1A2B45;
+    --ok: #5BD59C; --ok-bg: #12301F; --warn: #F0B35A; --warn-bg: #36270E; --bad: #FF8A86; --bad-bg: #3A1716;
+    --scrim: rgba(0, 0, 0, 0.62);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C131B; --surface: #151F2A; --ink: #E8EEF4; --muted: #94A2B1; --line: #263341; --track: #263341;
+  --accent: #7AA8FF; --accent-ink: #06142B; --accent-soft: #1A2B45;
+  --ok: #5BD59C; --ok-bg: #12301F; --warn: #F0B35A; --warn-bg: #36270E; --bad: #FF8A86; --bad-bg: #3A1716;
+  --scrim: rgba(0, 0, 0, 0.62);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.4;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.app { max-width: 640px; margin: 0 auto; padding-bottom: 96px; }
+
+.top { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; padding: 18px 0 14px; flex-wrap: wrap; }
+.eyebrow { margin: 0; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+h1 { margin: 2px 0 0; font-family: var(--display); font-weight: 700; font-size: 28px; line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance; }
+.month { display: flex; align-items: center; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 3px; }
+.month button { width: 38px; height: 38px; border: 0; background: transparent; border-radius: 9px; font-size: 18px; color: var(--muted); }
+.month button:hover { background: var(--accent-soft); color: var(--accent); }
+.month span { min-width: 112px; text-align: center; font-weight: 600; font-size: 14px; }
+.sync { margin: 0 0 12px; font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; min-height: 16px; }
+.sync i { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); display: inline-block; }
+.sync.saving i { background: var(--warn); }
+.sync.error i, .sync.local i { background: var(--bad); }
+
+.hero { background: var(--ink); color: var(--bg); border-radius: 16px; padding: 18px 18px 16px; display: grid; gap: 12px; }
+.hero .eyebrow { color: color-mix(in srgb, var(--bg) 62%, transparent); }
+.hero .big { font-family: var(--display); font-weight: 700; font-size: 40px; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.hero .big.pos { color: color-mix(in srgb, var(--ok-bg) 70%, #7be0b0); }
+.hero .big.neg { color: #FF9C98; }
+.hero .bar { background: color-mix(in srgb, var(--bg) 22%, transparent); }
+.hero .bar span { background: var(--bg); }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.stat b { display: block; font-family: var(--mono); font-weight: 500; font-size: 14px; font-variant-numeric: tabular-nums; }
+.stat small { font-size: 11px; color: color-mix(in srgb, var(--bg) 62%, transparent); text-transform: uppercase; letter-spacing: 0.06em; }
+.bar { height: 8px; border-radius: 99px; background: var(--track); overflow: hidden; }
+.bar span { display: block; height: 100%; border-radius: 99px; background: var(--accent); }
+.bar.warn span { background: var(--warn); }
+.bar.bad span { background: var(--bad); }
+
+.group { margin-top: 22px; }
+.group-h { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 0 2px 8px; }
+.group-h h2 { margin: 0; font-family: var(--display); font-weight: 700; font-size: 19px; letter-spacing: -0.01em; }
+.group-h span { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; text-align: right; }
+.list { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.row { display: flex; align-items: center; gap: 12px; padding: 10px 14px 10px 10px; border-top: 1px solid var(--line); min-width: 0; }
+.row:first-child { border-top: 0; }
+.chk { flex: none; width: 40px; height: 40px; border-radius: 12px; border: 2px solid var(--line); background: transparent; display: grid; place-items: center; color: transparent; }
+.chk svg { width: 20px; height: 20px; }
+.chk[aria-pressed="true"] { background: var(--ok); border-color: var(--ok); color: #fff; }
+.main { flex: 1; min-width: 0; text-align: left; background: none; border: 0; padding: 4px 0; }
+.main strong { display: block; font-weight: 600; overflow-wrap: anywhere; }
+.main small { display: block; color: var(--muted); font-size: 12.5px; overflow-wrap: anywhere; }
+.val { font-family: var(--mono); font-weight: 500; font-size: 14px; font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; }
+.val .pill { display: block; margin-top: 3px; }
+.pill { display: inline-block; font-family: var(--body); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 99px; }
+.pill.ok { background: var(--ok-bg); color: var(--ok); }
+.pill.bad { background: var(--bad-bg); color: var(--bad); }
+.pill.warn { background: var(--warn-bg); color: var(--warn); }
+.row.paid .main strong { color: var(--muted); }
+.row.paid .val { color: var(--muted); }
+
+.vbtn { background: none; border: 0; border-bottom: 1px dashed var(--muted); padding: 6px 0 2px; font: inherit; color: inherit; white-space: nowrap; }
+.vbtn:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.empty { margin-top: 22px; padding: 28px 18px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 14px; }
+.empty b { display: block; color: var(--ink); font-family: var(--display); font-size: 18px; margin-bottom: 4px; }
+.add { display: block; width: 100%; margin-top: 18px; padding: 13px; border: 1.5px dashed var(--accent); background: transparent; color: var(--accent); border-radius: 12px; font-weight: 600; }
+.add:hover { background: var(--accent-soft); }
+
+.aula { padding: 12px 14px; border-top: 1px solid var(--line); display: grid; gap: 9px; }
+.aula:first-child { border-top: 0; }
+.aula-top { display: flex; align-items: center; gap: 10px; justify-content: space-between; }
+.stepper { display: flex; align-items: center; gap: 6px; flex: none; }
+.stepper button { width: 38px; height: 38px; border-radius: 11px; border: 1px solid var(--line); background: var(--surface); font-size: 20px; line-height: 1; }
+.stepper button.dec { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.stepper button:disabled { opacity: 0.35; cursor: default; }
+.stepper output { min-width: 28px; text-align: center; font-family: var(--mono); font-weight: 500; font-size: 18px; font-variant-numeric: tabular-nums; }
+.aula-meta { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 10px; font-size: 12.5px; color: var(--muted); }
+.link { background: none; border: 0; padding: 4px 0; color: var(--accent); font-weight: 600; font-size: 12.5px; }
+
+.tabs { position: fixed; left: 0; right: 0; bottom: 0; background: var(--surface); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom, 0px); z-index: 5; }
+.tabs-in { max-width: 640px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 8px max(16px, env(safe-area-inset-right, 0px)) 8px max(16px, env(safe-area-inset-left, 0px)); }
+.tab { position: relative; border: 0; background: transparent; padding: 10px 6px; border-radius: 11px; font-weight: 600; font-size: 14px; color: var(--muted); }
+.tab[aria-selected="true"] { background: var(--accent-soft); color: var(--accent); }
+.tab em { font-style: normal; font-family: var(--mono); font-size: 11px; background: var(--bad); color: #fff; border-radius: 99px; padding: 1px 6px; margin-left: 6px; }
+.tab em.soft { background: var(--warn); }
+
+.scrim { position: fixed; inset: 0; background: var(--scrim); z-index: 10; display: flex; align-items: flex-end; justify-content: center; }
+.sheet { width: 100%; max-width: 520px; background: var(--surface); border-radius: 18px 18px 0 0; padding: 18px 18px calc(18px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 14px; max-height: 92%; overflow-y: auto; }
+.sheet h3 { margin: 0; font-family: var(--display); font-size: 21px; font-weight: 700; }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.field { display: grid; gap: 5px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+.field label { font-size: 12px; font-weight: 600; color: var(--muted); }
+.field input, .field select { width: 100%; font: inherit; font-size: 16px; padding: 11px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+.btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn { flex: 1; min-width: 110px; padding: 12px 14px; border-radius: 11px; border: 1px solid var(--line); background: var(--surface); font-weight: 600; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.danger { color: var(--bad); }
+.btn.danger.armed { background: var(--bad); border-color: var(--bad); color: #fff; }
+.adds { display: flex; gap: 10px; margin-top: 18px; }
+.adds .add { margin-top: 0; width: auto; flex: 1; }
+.btn.mini { flex: none; min-width: 0; padding: 8px 12px; font-size: 13px; }
+.pessoas { display: grid; gap: 12px; }
+.pessoa { display: grid; gap: 7px; }
+.prow { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.pinfo { min-width: 0; }
+.pinfo strong { display: block; font-weight: 600; overflow-wrap: anywhere; }
+.pinfo small { display: block; color: var(--muted); font-size: 12.5px; }
+.stepper output.neg { color: var(--bad); }
+.hadd { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
+.hadd .field { flex: 1; }
+.hadd .btn { flex: none; min-width: 0; }
+.hadd input, .hadd select, .hrow input { font: inherit; font-size: 16px; padding: 10px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); min-width: 0; width: 100%; }
+.hlist { display: grid; gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.hrow { display: grid; grid-template-columns: minmax(0, 150px) minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 8px 10px; border-top: 1px solid var(--line); }
+.hrow:first-child { border-top: 0; }
+.hmain { min-width: 0; }
+.hmain strong { display: block; font-size: 14px; }
+.hmain small { display: block; color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
+.hempty { margin: 0; padding: 14px; color: var(--muted); font-size: 13.5px; border: 1px dashed var(--line); border-radius: 12px; }
+.err { margin: 0; color: var(--bad); font-size: 13px; min-height: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .bar span { transition: width 0.25s ease; }
+}
+
+.sync.local i { background: var(--ok); }
+.backup { margin-top: 32px; padding: 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); display: grid; gap: 10px; }
+.backup h2 { margin: 0; font-family: var(--display); font-size: 17px; }
+.backup p { margin: 0; color: var(--muted); font-size: 13px; }
+.bk-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.bk-btns .btn { text-align: center; }
+label.btn { cursor: pointer; }
+</style>
+</head>
+<body>
+
+
+<div class="app">
+  <header class="top">
+    <div>
+      <p class="eyebrow">Elevare Saúde e Movimento</p>
+      <h1 id="h1">Controle</h1>
+    </div>
+    <div class="month" role="group" aria-label="Mês">
+      <button type="button" data-act="prev" aria-label="Mês anterior">&#8249;</button>
+      <span id="mlabel"></span>
+      <button type="button" data-act="next" aria-label="Próximo mês">&#8250;</button>
+    </div>
+  </header>
+  <p class="sync" id="sync"><i></i><span>Carregando…</span></p>
+  <main id="view"></main>
+
+  <footer class="backup" id="backup">
+    <h2>Backup dos dados</h2>
+    <p>Os dados ficam salvos neste aparelho. Exporte uma cópia de vez em quando e guarde no iCloud ou no Drive.</p>
+    <div class="bk-btns">
+      <button class="btn" type="button" id="bk-export">Exportar backup</button>
+      <label class="btn" for="bk-import">Importar backup</label>
+      <input type="file" id="bk-import" accept="application/json,.json" hidden>
+    </div>
+    <p class="bk-msg" id="bk-msg" role="status">Importar substitui os dados atuais pelos do arquivo.</p>
+  </footer>
+</div>
+
+<nav class="tabs" aria-label="Seções">
+  <div class="tabs-in" role="tablist">
+    <button class="tab" type="button" role="tab" data-act="tab" data-tab="receber" id="t-receber">Receber</button>
+    <button class="tab" type="button" role="tab" data-act="tab" data-tab="gastos" id="t-gastos">Gastos</button>
+    <button class="tab" type="button" role="tab" data-act="tab" data-tab="aulas" id="t-aulas">Aulas</button>
+  </div>
+</nav>
+
+<div class="scrim" id="scrim" hidden>
+  <form class="sheet" id="sheet" novalidate></form>
+</div>
+
+<script>window.__SEED__ = {"cobrancas": [{"dia": 1, "id": "c01", "nome": "Pedro", "obs": "", "valor": 1500}, {"dia": 1, "id": "c02", "nome": "Camila", "obs": "", "valor": 1300}, {"dia": 1, "id": "c03", "nome": "Jessica e Osmar", "obs": "", "valor": 780}, {"dia": 1, "id": "c04", "nome": "Luciano", "obs": "", "valor": 1720}, {"dia": 10, "id": "c05", "nome": "Bere", "obs": "", "valor": 1530}, {"dia": 10, "id": "c06", "nome": "Marcelo", "obs": "", "valor": 1400}, {"dia": 10, "id": "c07", "nome": "Gabriel", "obs": "", "valor": 1000}, {"dia": 10, "id": "c08", "nome": "Henrique e Nataly", "obs": "Na anotação estava 1600,00/800", "valor": 1600}, {"dia": 24, "id": "c09", "nome": "Carol", "obs": "", "valor": 1500}, {"dia": 24, "id": "c10", "nome": "Deborah", "obs": "", "valor": 1680}, {"dia": 31, "id": "c11", "nome": "Ricardo", "obs": "", "valor": 2400}, {"dia": 31, "id": "c12", "nome": "Victor", "obs": "", "valor": 550}, {"dia": 31, "id": "c13", "nome": "Manu e Pedro", "obs": "", "valor": 2400}, {"dia": 31, "id": "c14", "nome": "Fernanda", "obs": "", "valor": 1395}, {"dia": 31, "id": "c15", "nome": "Marcelo", "obs": "Segunda cobrança", "valor": 1400}], "pagos": {"2026-10": ["c02", "c03", "c05", "c06", "c07", "c01"]}, "gastos": [{"id": "g01", "nome": "Apartamento", "valor": 6350}, {"id": "g02", "nome": "Saídas e lazer", "valor": 2000}, {"id": "g03", "nome": "Faculdade", "valor": 650}, {"id": "g04", "nome": "Reserva de emergência", "valor": 2000}, {"id": "g05", "nome": "Viagem", "valor": 2000}, {"id": "g06", "nome": "Moto", "valor": 600}, {"id": "g07", "nome": "Robson", "valor": 2021}, {"id": "g08", "nome": "Alimentação", "valor": 1500}, {"id": "g09", "nome": "Imposto", "valor": 1000}, {"id": "g10", "nome": "Cartão de crédito", "valor": 1177}], "aulas": [{"id": "a01", "log": [], "nome": "Diogo + Djorka", "obs": "", "pessoas": [{"id": "a01p1", "nome": "Diogo", "rest": 4}, {"id": "a01p2", "nome": "Djorka", "rest": 4}], "total": 8}, {"id": "a02", "nome": "Carolline", "obs": "", "rest": 4, "total": 12}, {"id": "a03", "nome": "Camila", "obs": "", "rest": 4, "total": 10}, {"id": "a04", "nome": "Victor", "obs": "", "rest": 2, "total": 5}, {"id": "a05", "nome": "Pedro", "obs": "", "rest": 4, "total": 12}, {"id": "a06", "log": [{"d": "2026-10-14", "id": "1qcjfpy", "t": "aula", "txt": ""}, {"d": "2026-10-14", "id": "zxbjvfr", "t": "ajuste", "txt": "restantes 7 → 0"}], "nome": "Gabriel", "obs": "", "rest": 0, "total": 8}, {"id": "a07", "nome": "Luciano", "obs": "", "rest": 12, "total": 12}, {"id": "a08", "nome": "Raissa", "obs": "", "rest": 5, "total": 12}, {"id": "a09", "nome": "Manu + Pedro", "obs": "", "pessoas": [{"id": "a09p1", "nome": "Manu", "rest": 7}, {"id": "a09p2", "nome": "Pedro", "rest": 0}], "total": 12}, {"id": "a10", "log": [{"d": "2026-10-14", "id": "iyfv5gj", "ps": ["a10p2"], "t": "aula", "txt": "Jessica"}], "nome": "Osmar + Jessica", "obs": "", "pessoas": [{"id": "a10p1", "nome": "Osmar", "rest": 2}, {"id": "a10p2", "nome": "Jessica", "rest": 2}], "total": 4}, {"id": "a11", "nome": "Ricardo", "obs": "", "rest": 3, "total": 12}, {"id": "a12", "nome": "Raquel Souza", "obs": "", "rest": 1, "total": 4}, {"id": "a13", "nome": "Bere", "obs": "", "rest": 4, "total": 9}, {"id": "a14", "nome": "Deborah", "obs": "", "rest": 8, "total": 12}, {"id": "a15", "nome": "Fernanda", "obs": "", "rest": 7, "total": 10}, {"id": "a16", "nome": "Marcelo", "obs": "", "rest": 4, "total": 10}, {"id": "a17", "nome": "Henrique + Nataly", "obs": "", "pessoas": [{"id": "a17p1", "nome": "Henrique", "rest": 2}, {"id": "a17p2", "nome": "Nataly", "rest": 2}], "total": 8}, {"id": "a18", "nome": "Celina", "obs": "Sem pacote", "rest": 0, "total": 0}]};</script>
+<script>
+(function () {
+  var MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  var now = new Date();
+  var TY = now.getFullYear(), TM = now.getMonth(), TD = now.getDate();
+  var Y = TY, M = TM;
+  var tab = 'receber';
+  try { var saved = localStorage.getItem('elevare-tab'); if (saved) tab = saved; } catch (e) {}
+  var S = { cobrancas: [], pagos: {}, gastos: [], aulas: [] };
+  var loaded = false, mode = 'loading', ref = null, dirty = false, writing = false, again = false, timer = null;
+  var editing = null;
+
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function money(n) {
+    n = Number(n) || 0;
+    return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: n % 1 === 0 ? 0 : 2, maximumFractionDigits: 2 });
+  }
+  function uid() { return Math.random().toString(36).slice(2, 9); }
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function monthKey() { return Y + '-' + pad(M + 1); }
+  function dim() { return new Date(Y, M + 1, 0).getDate(); }
+  function sum(arr, f) { return arr.reduce(function (a, x) { return a + f(x); }, 0); }
+  function shiftKey(key, delta) {
+    var p = key.split('-');
+    var d = new Date(+p[0], +p[1] - 1 + delta, 1);
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1);
+  }
+  function vis(x) {
+    var k = monthKey();
+    return (!x.desde || x.desde <= k) && (!x.ate || x.ate >= k);
+  }
+  function valorEm(x, key) {
+    key = key || monthKey();
+    var h = x.hist || {}, best = null;
+    Object.keys(h).forEach(function (k) { if (k <= key && (best === null || k > best)) best = k; });
+    return best !== null ? Number(h[best]) : (Number(x.valor) || 0);
+  }
+  function setValor(x, v, onlyThisMonth) {
+    var key = monthKey();
+    x.hist = x.hist || {};
+    if (onlyThisMonth) {
+      var nk = shiftKey(key, 1);
+      if (x.hist[nk] === undefined) x.hist[nk] = valorEm(x, nk);
+    }
+    x.hist[key] = v;
+  }
+  function todayISO() { return TY + '-' + pad(TM + 1) + '-' + pad(TD); }
+  function fmtDate(iso) {
+    var p = String(iso || '').split('-');
+    if (p.length !== 3) return '—';
+    var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    var w = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'][d.getDay()];
+    return w + ' ' + pad(+p[2]) + '/' + pad(+p[1]);
+  }
+  function logAdd(a, t, txt, d) {
+    a.log = a.log || [];
+    a.log.push({ id: uid(), t: t, d: d || todayISO(), txt: txt || '' });
+  }
+  function lastLog(a, t) {
+    var best = null;
+    (a.log || []).forEach(function (l) {
+      if (t && l.t !== t) return;
+      if (!best || l.d >= best.d) best = l;
+    });
+    return best;
+  }
+  function normalize(d) {
+    d = d || {};
+    return { cobrancas: d.cobrancas || [], pagos: d.pagos || {}, gastos: d.gastos || [], aulas: d.aulas || [] };
+  }
+
+  /* ---------- persistência ---------- */
+  function setSync(kind) {
+    var el = $('sync');
+    el.className = 'sync ' + kind;
+    var txt = { ok: 'Salvo automaticamente', saving: 'Salvando…', error: 'Não foi possível salvar. Confira se você é o dono desta página.', local: 'Salvo neste aparelho', loading: 'Carregando…' }[kind];
+    el.lastChild.textContent = txt;
+  }
+  function useLocal() {
+    mode = 'local';
+    var raw = null; try { raw = localStorage.getItem('elevare-estado'); } catch (e) {}
+    if (raw) { try { S = normalize(JSON.parse(raw)); } catch (e) {} } else if (window.__SEED__) { S = normalize(JSON.parse(JSON.stringify(window.__SEED__))); try { localStorage.setItem('elevare-estado', JSON.stringify(S)); } catch (e) {} }
+    loaded = true; setSync('local'); render();
+  }
+  function flush() {
+    if (writing) { again = true; return; }
+    writing = true; setSync('saving');
+    (function loop() {
+      again = false;
+      var snapshot = JSON.parse(JSON.stringify(S));
+      var p;
+      if (mode === 'db') { p = ref.set(snapshot); }
+      else { try { localStorage.setItem('elevare-estado', JSON.stringify(snapshot)); p = Promise.resolve(); } catch (e) { p = Promise.reject(e); } }
+      p.then(function () {
+        if (again) return loop();
+        writing = false; dirty = false; setSync(mode === 'db' ? 'ok' : 'local');
+      }, function () { writing = false; setSync('error'); });
+    })();
+  }
+  function save() {
+    dirty = true; render();
+    clearTimeout(timer); timer = setTimeout(flush, 250);
+  }
+  function init() {
+    var c = window.claude;
+    if (!c || !c.use) { useLocal(); return; }
+    c.use('db').then(function (db) {
+      if (!db) { useLocal(); return; }
+      mode = 'db'; ref = db.doc('painel/estado');
+      ref.onSnapshot(function (snap) {
+        if (dirty || writing || snap.metadata.hasPendingWrites) return;
+        S = normalize(snap.exists ? JSON.parse(JSON.stringify(snap.data())) : null);
+        loaded = true; setSync('ok'); render();
+      }, function () { useLocal(); });
+    }, function () { useLocal(); });
+  }
+
+  /* ---------- regras ---------- */
+  function statusOf(c) {
+    var due = Math.min(Number(c.dia) || 1, dim());
+    var diff = (Y * 12 + M) - (TY * 12 + TM);
+    if (diff < 0) return 'atrasado';
+    if (diff > 0) return 'aberto';
+    if (due < TD) return 'atrasado';
+    if (due === TD) return 'hoje';
+    return 'aberto';
+  }
+  function receberData() {
+    var paid = new Set(S.pagos[monthKey()] || []);
+    var items = S.cobrancas.filter(vis).map(function (c) {
+      var p = paid.has(c.id);
+      return { c: c, v: valorEm(c), paid: p, st: p ? 'pago' : statusOf(c), due: Math.min(Number(c.dia) || 1, dim()) };
+    });
+    var previsto = sum(items, function (i) { return i.v; });
+    var recebido = sum(items, function (i) { return i.paid ? i.v : 0; });
+    var atraso = sum(items, function (i) { return i.st === 'atrasado' ? i.v : 0; });
+    var nAtraso = items.filter(function (i) { return i.st === 'atrasado'; }).length;
+    return { items: items, previsto: previsto, recebido: recebido, atraso: atraso, nAtraso: nAtraso };
+  }
+  function ppl(a) { return a.pessoas || [a]; }
+  function minRest(a) { return Math.min.apply(null, ppl(a).map(function (p) { return Number(p.rest) || 0; })); }
+  function aulaTone(a) {
+    var m = minRest(a);
+    if (m < 0 || (a.total > 0 && m <= 0)) return 'bad';
+    if (a.total > 0 && m <= 2) return 'warn';
+    return '';
+  }
+  function precisaRenovar(a) { var m = minRest(a); return m < 0 || (a.total > 0 && m <= 2); }
+  function toneOf(rest, total) {
+    if (rest < 0 || (total > 0 && rest === 0)) return 'bad';
+    if (total > 0 && rest <= 2) return 'warn';
+    return '';
+  }
+  function barPct(rest, total) {
+    if (rest < 0) return 100;
+    return total > 0 ? Math.min(100, Math.round(rest / total * 100)) : 0;
+  }
+  function statusTxt(rest, total) {
+    if (rest < 0) return (-rest) + (rest === -1 ? ' aula além do pacote · a cobrar' : ' aulas além do pacote · a cobrar');
+    if (total > 0) return 'restam ' + rest + ' de ' + total;
+    return rest > 0 ? 'restam ' + rest : 'sem pacote ativo';
+  }
+  function giveClass(a, pids, date) {
+    var names = [];
+    ppl(a).forEach(function (p) {
+      if (pids.indexOf(p.id) >= 0) { p.rest = (Number(p.rest) || 0) - 1; names.push(p.nome); }
+    });
+    if (!names.length) return;
+    a.log = a.log || [];
+    a.log.push({ id: uid(), t: 'aula', d: date || todayISO(), txt: a.pessoas ? names.join(' e ') : '', ps: pids.slice() });
+  }
+  function undoClass(a, pid) {
+    var p = ppl(a).filter(function (x) { return x.id === pid; })[0];
+    if (!p || p.rest >= a.total) return;
+    p.rest++;
+    var log = a.log || [], idx = -1;
+    log.forEach(function (l, n) { if (l.t === 'aula' && (l.ps ? l.ps.indexOf(pid) >= 0 : pid === a.id)) idx = n; });
+    if (idx < 0) return;
+    var l = log[idx];
+    if (l.ps && l.ps.length > 1) {
+      l.ps = l.ps.filter(function (x) { return x !== pid; });
+      l.txt = ppl(a).filter(function (x) { return l.ps.indexOf(x.id) >= 0; }).map(function (x) { return x.nome; }).join(' e ');
+    } else { log.splice(idx, 1); }
+  }
+
+  /* ---------- telas ---------- */
+  var CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+
+  function renderReceber() {
+    var d = receberData();
+    if (!d.items.length) {
+      return '<div class="empty"><b>Nenhuma cobrança cadastrada</b>Adicione cada aluno com o dia do vencimento e o valor. As marcações de pago começam zeradas a cada mês.</div><button class="add" type="button" data-act="new-cobranca">+ Nova cobrança</button>';
+    }
+    var falta = d.previsto - d.recebido;
+    var pct = d.previsto ? Math.round(d.recebido / d.previsto * 100) : 0;
+    var html = '<section class="hero"><div><p class="eyebrow">A receber em ' + MESES[M].toLowerCase() + '</p><div class="big">' + money(falta) + '</div></div>' +
+      '<div class="bar" role="img" aria-label="' + pct + '% recebido"><span style="width:' + pct + '%"></span></div>' +
+      '<div class="stats"><div class="stat"><small>Previsto</small><b>' + money(d.previsto) + '</b></div>' +
+      '<div class="stat"><small>Recebido</small><b>' + money(d.recebido) + '</b></div>' +
+      '<div class="stat"><small>Em atraso</small><b>' + money(d.atraso) + '</b></div></div></section>';
+    var days = {};
+    d.items.forEach(function (i) { (days[i.due] = days[i.due] || []).push(i); });
+    Object.keys(days).map(Number).sort(function (a, b) { return a - b; }).forEach(function (day) {
+      var g = days[day];
+      var tot = sum(g, function (i) { return i.v; });
+      var np = g.filter(function (i) { return i.paid; }).length;
+      html += '<section class="group"><div class="group-h"><h2>Dia ' + pad(day) + '</h2><span>' + money(tot) + ' · ' + np + ' de ' + g.length + ' pagos</span></div><div class="list">';
+      g.forEach(function (i) {
+        var pill = i.st === 'pago' ? '<span class="pill ok">Pago</span>' : i.st === 'atrasado' ? '<span class="pill bad">Atrasado</span>' : i.st === 'hoje' ? '<span class="pill warn">Vence hoje</span>' : '';
+        html += '<div class="row' + (i.paid ? ' paid' : '') + '">' +
+          '<button class="chk" type="button" data-act="pago" data-id="' + esc(i.c.id) + '" aria-pressed="' + i.paid + '" aria-label="Marcar ' + esc(i.c.nome) + ' como pago">' + CHECK + '</button>' +
+          '<button class="main" type="button" data-act="edit-cobranca" data-id="' + esc(i.c.id) + '"><strong>' + esc(i.c.nome) + '</strong>' + (i.c.obs ? '<small>' + esc(i.c.obs) + '</small>' : '') + '</button>' +
+          '<div class="val"><button class="vbtn" type="button" data-act="edit-valor" data-k="cobranca" data-id="' + esc(i.c.id) + '" aria-label="Alterar valor de ' + esc(i.c.nome) + ' em ' + MESES[M].toLowerCase() + '">' + money(i.v) + '</button>' + pill + '</div></div>';
+      });
+      html += '</div></section>';
+    });
+    return html + '<button class="add" type="button" data-act="new-cobranca">+ Nova cobrança</button>';
+  }
+
+  function renderGastos() {
+    var d = receberData();
+    var gastos = S.gastos.filter(vis).map(function (g) { return { id: g.id, nome: g.nome, valor: valorEm(g) }; });
+    var total = sum(gastos, function (g) { return g.valor; });
+    var sobra = d.previsto - total;
+    var html = '<section class="hero"><div><p class="eyebrow">Sobra prevista em ' + MESES[M].toLowerCase() + '</p><div class="big ' + (sobra >= 0 ? 'pos' : 'neg') + '">' + (sobra < 0 ? '−' : '') + money(Math.abs(sobra)) + '</div></div>' +
+      '<div class="stats" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div class="stat"><small>Entradas previstas</small><b>' + money(d.previsto) + '</b></div>' +
+      '<div class="stat"><small>Gastos fixos</small><b>' + money(total) + '</b></div></div></section>';
+    if (!gastos.length) {
+      return html + '<div class="empty"><b>Nenhum gasto fixo</b>Cadastre apartamento, faculdade, reserva e o resto. O total sai sozinho.</div><button class="add" type="button" data-act="new-gasto">+ Novo gasto</button>';
+    }
+    html += '<section class="group"><div class="group-h"><h2>Gastos fixos</h2><span>' + gastos.length + ' itens · ' + money(total) + '</span></div><div class="list">';
+    var sorted = gastos.slice().sort(function (a, b) { return (Number(b.valor) || 0) - (Number(a.valor) || 0); });
+    sorted.forEach(function (g) {
+      var share = total ? Math.round((Number(g.valor) || 0) / total * 100) : 0;
+      html += '<div class="aula"><div class="aula-top"><button class="main" type="button" data-act="edit-gasto" data-id="' + esc(g.id) + '"><strong>' + esc(g.nome) + '</strong></button><div class="val"><button class="vbtn" type="button" data-act="edit-valor" data-k="gasto" data-id="' + esc(g.id) + '" aria-label="Alterar valor de ' + esc(g.nome) + ' em ' + MESES[M].toLowerCase() + '">' + money(g.valor) + '</button></div></div>' +
+        '<div class="aula-meta"><div class="bar" style="flex:1" role="img" aria-label="' + share + '% do total"><span style="width:' + share + '%"></span></div><span>' + share + '%</span></div></div>';
+    });
+    return html + '</div></section><button class="add" type="button" data-act="new-gasto">+ Novo gasto</button>';
+  }
+
+  function stepper(a, p) {
+    var pd = ' data-id="' + esc(a.id) + '" data-p="' + esc(p.id) + '"';
+    return '<div class="stepper"><button class="dec" type="button" data-act="dec"' + pd + ' aria-label="Dar uma aula para ' + esc(p.nome) + '">−</button>' +
+      '<output class="' + (p.rest < 0 ? 'neg' : '') + '">' + p.rest + '</output>' +
+      '<button type="button" data-act="inc"' + pd + (p.rest >= a.total ? ' disabled' : '') + ' aria-label="Desfazer uma aula de ' + esc(p.nome) + '">+</button></div>';
+  }
+  function barHtml(rest, total) {
+    if (!(total > 0) && rest >= 0) return '';
+    return '<div class="bar ' + toneOf(rest, total) + '" role="img" aria-label="' + statusTxt(rest, total) + '"><span style="width:' + barPct(rest, total) + '%"></span></div>';
+  }
+  function renderAulas() {
+    var adds = '<div class="adds"><button class="add" type="button" data-act="new-aula">+ Novo aluno</button><button class="add" type="button" data-act="new-dupla">+ Nova dupla</button></div>';
+    if (!S.aulas.length) {
+      return '<div class="empty"><b>Nenhum aluno com pacote</b>Cadastre quantas aulas restam e o total do pacote. Ao dar uma aula, toque em menos um.</div>' + adds;
+    }
+    var restantes = 0, extra = 0, acabando = 0;
+    S.aulas.forEach(function (a) {
+      ppl(a).forEach(function (p) { var r = Number(p.rest) || 0; if (r > 0) restantes += r; else extra -= r; });
+      if (precisaRenovar(a)) acabando++;
+    });
+    var html = '<section class="hero"><div><p class="eyebrow">Aulas restantes no total</p><div class="big">' + restantes + '</div></div>' +
+      '<div class="stats"><div class="stat"><small>Alunos</small><b>' + S.aulas.length + '</b></div>' +
+      '<div class="stat"><small>Pacote acabando</small><b>' + acabando + '</b></div>' +
+      '<div class="stat"><small>Além do pacote</small><b>' + extra + '</b></div></div></section>' +
+      '<section class="group"><div class="group-h"><h2>Pacotes</h2><span>a ordem não muda sozinha</span></div><div class="list">';
+    S.aulas.forEach(function (a) {
+      var ult = lastLog(a, 'aula'), anyLog = lastLog(a);
+      var info = ult ? 'Última aula: ' + fmtDate(ult.d) : (anyLog ? 'Alterado em ' + fmtDate(anyLog.d) : 'Sem registro de datas');
+      var nameBtn = '<button class="main" type="button" data-act="edit-aula" data-id="' + esc(a.id) + '"><strong>' + esc(a.nome) + '</strong>' + (a.obs ? '<small>' + esc(a.obs) + '</small>' : '') + '</button>';
+      var foot = '<button class="link" type="button" data-act="hist" data-id="' + esc(a.id) + '">' + ((ult || anyLog) ? info + ' · datas' : 'Ver e registrar datas') + '</button>';
+      var renew = precisaRenovar(a) ? '<div class="aula-meta"><button class="link" type="button" data-act="renovar" data-id="' + esc(a.id) + '">Renovar pacote</button></div>' : '';
+      if (a.pessoas) {
+        html += '<div class="aula"><div class="aula-top">' + nameBtn + '<button class="btn mini" type="button" data-act="both" data-id="' + esc(a.id) + '">Aula p/ os dois</button></div><div class="pessoas">';
+        a.pessoas.forEach(function (p) {
+          html += '<div class="pessoa"><div class="prow"><div class="pinfo"><strong>' + esc(p.nome) + '</strong><small>' + statusTxt(p.rest, a.total) + '</small></div>' + stepper(a, p) + '</div>' + barHtml(p.rest, a.total) + '</div>';
+        });
+        html += '</div><div class="aula-meta"><button class="vbtn" type="button" data-act="edit-pacote" data-id="' + esc(a.id) + '">Pacote de ' + a.total + ' aulas por pessoa</button>' + foot + '</div>' + renew + '</div>';
+      } else {
+        html += '<div class="aula"><div class="aula-top">' + nameBtn + stepper(a, a) + '</div>' + barHtml(a.rest, a.total) +
+          '<div class="aula-meta"><button class="vbtn" type="button" data-act="edit-pacote" data-id="' + esc(a.id) + '" aria-label="Alterar pacote de ' + esc(a.nome) + '">' + statusTxt(a.rest, a.total) + '</button>' + foot + '</div>' + renew + '</div>';
+      }
+    });
+    return html + '</div></section>' + adds;
+  }
+
+  function render() {
+    $('mlabel').textContent = MESES[M] + ' ' + Y;
+    var d = receberData();
+    var nAulas = S.aulas.filter(precisaRenovar).length;
+    ['receber', 'gastos', 'aulas'].forEach(function (t) {
+      var el = $('t-' + t);
+      el.setAttribute('aria-selected', String(t === tab));
+      var label = { receber: 'Receber', gastos: 'Gastos', aulas: 'Aulas' }[t];
+      var badge = '';
+      if (loaded && t === 'receber' && d.nAtraso) badge = '<em>' + d.nAtraso + '</em>';
+      if (loaded && t === 'aulas' && nAulas) badge = '<em class="soft">' + nAulas + '</em>';
+      el.innerHTML = label + badge;
+    });
+    $('h1').textContent = { receber: 'Mensalidades', gastos: 'Gastos fixos', aulas: 'Controle de aulas' }[tab];
+    if (!loaded) { $('view').innerHTML = '<div class="empty">Carregando seus dados…</div>'; return; }
+    $('view').innerHTML = tab === 'receber' ? renderReceber() : tab === 'gastos' ? renderGastos() : renderAulas();
+  }
+
+  /* ---------- editor ---------- */
+  function field(id, label, type, value, extra, full) {
+    return '<div class="field' + (full ? ' full' : '') + '"><label for="f-' + id + '">' + label + '</label><input id="f-' + id + '" name="' + id + '" type="' + type + '" value="' + esc(value) + '" ' + (extra || '') + '></div>';
+  }
+  function escopoField() {
+    var m = MESES[M].toLowerCase();
+    return '<div class="field full"><label for="f-escopo">Se o valor mudou, vale para</label><select id="f-escopo" name="escopo">' +
+      '<option value="only">Só ' + m + '</option><option value="from">' + m + ' e os meses seguintes</option></select></div>';
+  }
+  function pacoteDiff(a, vals, total) {
+    var parts = [];
+    ppl(a).forEach(function (p, i) {
+      if (vals[i] !== p.rest) parts.push((a.pessoas ? p.nome + ': ' : 'restantes ') + p.rest + ' → ' + vals[i]);
+    });
+    if (total !== a.total) parts.push('pacote ' + a.total + ' → ' + total);
+    return parts.join(' · ');
+  }
+  function restFields(a) {
+    return ppl(a).map(function (p, i) {
+      return field('r' + i, a.pessoas ? 'Restantes de ' + esc(p.nome) : 'Aulas restantes', 'number', p.rest, 'inputmode="numeric" step="1"');
+    }).join('');
+  }
+  function openPacote(id, mode) {
+    var a = byId(S.aulas, id);
+    if (!a) return;
+    var foot = '<p class="err" id="err" role="alert"></p><div class="btns"><button class="btn primary" type="submit">' + (mode === 'renovar' ? 'Renovar' : 'Salvar') + '</button><button class="btn" type="button" data-act="close">Cancelar</button></div>';
+    if (mode === 'renovar') {
+      editing = { kind: 'renovar', id: id };
+      var hint = minRest(a) < 0 ? '<p class="hempty">As aulas dadas além do pacote são descontadas do novo pacote.</p>' : '';
+      $('sheet').innerHTML = '<h3>Renovar pacote de ' + esc(a.nome) + '</h3><div class="fields">' +
+        field('total', 'Aulas do novo pacote', 'number', a.total || '', 'inputmode="numeric" min="1"', true) + '</div>' + hint + foot;
+    } else {
+      editing = { kind: 'pacote', id: id };
+      $('sheet').innerHTML = '<h3>Pacote de ' + esc(a.nome) + '</h3><div class="fields">' + restFields(a) +
+        field('total', 'Total do pacote' + (a.pessoas ? ' (por pessoa)' : ''), 'number', a.total, 'inputmode="numeric" step="1"', true) + '</div>' + foot;
+    }
+    $('scrim').hidden = false;
+    setTimeout(function () { try { var el = $(mode === 'renovar' ? 'f-total' : 'f-r0'); el.focus(); el.select(); } catch (e) {} }, 30);
+  }
+  function openHist(id) {
+    var a = byId(S.aulas, id);
+    if (!a) return;
+    editing = { kind: 'hist', id: id };
+    var logs = (a.log || []).slice().sort(function (x, y) { return x.d < y.d ? 1 : x.d > y.d ? -1 : 0; });
+    var label = { aula: 'Aula dada', pacote: 'Pacote renovado', ajuste: 'Ajuste' };
+    var rows = logs.length ? logs.map(function (l) {
+      return '<div class="hrow"><input type="date" value="' + esc(l.d) + '" data-lid="' + esc(l.id) + '" aria-label="Data do registro">' +
+        '<div class="hmain"><strong>' + label[l.t] + '</strong>' + (l.txt ? '<small>' + esc(l.txt) + '</small>' : '') + '</div>' +
+        '<button class="link" type="button" data-act="hist-del" data-lid="' + esc(l.id) + '">Apagar</button></div>';
+    }).join('') : '<p class="hempty">Ainda não há datas registradas. A partir de agora, cada aula dada e cada mudança entram aqui.</p>';
+    var quem = a.pessoas ? '<div class="field"><label for="f-hquem">Para quem</label><select id="f-hquem"><option value="all">Os dois</option>' +
+      a.pessoas.map(function (p) { return '<option value="' + esc(p.id) + '">Só ' + esc(p.nome) + '</option>'; }).join('') + '</select></div>' : '';
+    $('sheet').innerHTML = '<h3>Datas de ' + esc(a.nome) + '</h3>' +
+      '<div class="hadd">' + quem + '<div class="field"><label for="f-hdata">Registrar aula dada em</label><input id="f-hdata" type="date" value="' + todayISO() + '"></div>' +
+      '<button class="btn primary" type="button" data-act="hist-add">Dar aula</button></div>' +
+      '<div class="hlist">' + rows + '</div>' +
+      '<div class="btns"><button class="btn" type="button" data-act="close">Fechar</button></div>';
+    $('scrim').hidden = false;
+  }
+  function openValor(sub, id) {
+    var item = byId(sub === 'cobranca' ? S.cobrancas : S.gastos, id);
+    if (!item) return;
+    editing = { kind: 'valor', sub: sub, id: id };
+    $('sheet').innerHTML = '<h3>' + esc(item.nome) + ' em ' + MESES[M].toLowerCase() + '</h3>' +
+      '<div class="fields">' + field('valor', 'Valor deste mês (R$)', 'number', valorEm(item), 'inputmode="decimal" step="0.01" min="0"', true) + '</div>' +
+      '<p class="err" id="err" role="alert"></p><div class="btns"><button class="btn primary" type="submit">Salvar</button><button class="btn" type="button" data-act="close">Cancelar</button></div>';
+    $('scrim').hidden = false;
+    setTimeout(function () { try { var v = $('f-valor'); v.focus(); v.select(); } catch (e) {} }, 30);
+  }
+  function openSheet(kind, id) {
+    var item = null, title = '', body = '';
+    if (kind === 'cobranca') {
+      item = S.cobrancas.filter(function (x) { return x.id === id; })[0];
+      title = item ? 'Editar cobrança' : 'Nova cobrança';
+      body = field('nome', 'Nome', 'text', item ? item.nome : '', 'autocomplete="off"', true) +
+        field('dia', 'Dia do vencimento', 'number', item ? item.dia : '', 'inputmode="numeric" min="1" max="31"') +
+        field('valor', 'Valor em ' + MESES[M].toLowerCase() + ' (R$)', 'number', item ? valorEm(item) : '', 'inputmode="decimal" step="0.01" min="0"') +
+        field('obs', 'Observação', 'text', item ? item.obs || '' : '', 'autocomplete="off"', true) + (item ? escopoField() : '');
+    } else if (kind === 'gasto') {
+      item = S.gastos.filter(function (x) { return x.id === id; })[0];
+      title = item ? 'Editar gasto' : 'Novo gasto';
+      body = field('nome', 'Nome', 'text', item ? item.nome : '', 'autocomplete="off"', true) +
+        field('valor', 'Valor em ' + MESES[M].toLowerCase() + ' (R$)', 'number', item ? valorEm(item) : '', 'inputmode="decimal" step="0.01" min="0"', true) + (item ? escopoField() : '');
+    } else if (kind === 'dupla') {
+      item = S.aulas.filter(function (x) { return x.id === id; })[0];
+      title = item ? 'Editar dupla' : 'Nova dupla';
+      var pp = item && item.pessoas ? item.pessoas : [{ nome: '', rest: '' }, { nome: '', rest: '' }];
+      body = field('n0', 'Primeira pessoa', 'text', pp[0].nome, 'autocomplete="off"') +
+        field('n1', 'Segunda pessoa', 'text', pp[1].nome, 'autocomplete="off"') +
+        field('r0', 'Restantes da primeira', 'number', pp[0].rest, 'inputmode="numeric" step="1"') +
+        field('r1', 'Restantes da segunda', 'number', pp[1].rest, 'inputmode="numeric" step="1"') +
+        field('total', 'Total do pacote (por pessoa)', 'number', item ? item.total : '', 'inputmode="numeric" step="1"', true) +
+        field('obs', 'Observação', 'text', item ? item.obs || '' : '', 'autocomplete="off"', true);
+    } else {
+      item = S.aulas.filter(function (x) { return x.id === id; })[0];
+      title = item ? 'Editar aluno' : 'Novo aluno';
+      body = field('nome', 'Nome', 'text', item ? item.nome : '', 'autocomplete="off"', true) +
+        field('r0', 'Aulas restantes', 'number', item ? item.rest : '', 'inputmode="numeric" step="1"') +
+        field('total', 'Total do pacote', 'number', item ? item.total : '', 'inputmode="numeric" step="1"') +
+        field('obs', 'Observação', 'text', item ? item.obs || '' : '', 'autocomplete="off"', true);
+    }
+    editing = { kind: kind, id: item ? item.id : null };
+    $('sheet').innerHTML = '<h3>' + title + '</h3><div class="fields">' + body + '</div><p class="err" id="err" role="alert"></p>' +
+      '<div class="btns"><button class="btn primary" type="submit">Salvar</button><button class="btn" type="button" data-act="close">Cancelar</button>' +
+      (item && kind !== 'aula' && kind !== 'dupla' ? '<button class="btn" type="button" data-act="encerrar">Encerrar a partir de ' + MESES[M].toLowerCase() + '</button>' : '') +
+      (item ? '<button class="btn danger" type="button" data-act="excluir" id="del">Excluir de todos os meses</button>' : '') + '</div>';
+    $('scrim').hidden = false;
+    var f = $('f-nome') || $('f-n0'); if (f) setTimeout(function () { try { f.focus(); } catch (e) {} }, 30);
+  }
+  function closeSheet() { $('scrim').hidden = true; editing = null; }
+  function num(v) { return parseFloat(String(v).replace(',', '.')); }
+
+  function submitSheet(e) {
+    e.preventDefault();
+    if (!editing) return;
+    var f = $('sheet').elements;
+    var err = $('err');
+    if (editing.kind === 'valor') {
+      var nv = num(f.valor.value);
+      if (!(nv >= 0)) { err.textContent = 'Digite o valor em reais.'; return; }
+      var vit = byId(editing.sub === 'cobranca' ? S.cobrancas : S.gastos, editing.id);
+      if (vit && nv !== valorEm(vit)) setValor(vit, nv, true);
+      closeSheet(); save(); return;
+    }
+    if (editing.kind === 'hist') return;
+    if (editing.kind === 'pacote') {
+      var pa = byId(S.aulas, editing.id);
+      if (!pa) { closeSheet(); return; }
+      var pvals = ppl(pa).map(function (p, i) { return Math.round(num(f['r' + i].value)); });
+      var pt = Math.round(num(f.total.value));
+      if (pvals.some(isNaN) || isNaN(pt) || pt < 0) { err.textContent = 'Digite as aulas restantes e o total do pacote.'; return; }
+      pt = Math.max(pt, Math.max.apply(null, pvals));
+      var pch = pacoteDiff(pa, pvals, pt);
+      ppl(pa).forEach(function (p, i) { p.rest = pvals[i]; });
+      pa.total = pt;
+      if (pch) logAdd(pa, 'ajuste', pch);
+      closeSheet(); save(); return;
+    }
+    if (editing.kind === 'renovar') {
+      var ra = byId(S.aulas, editing.id), rn = Math.round(num(f.total.value));
+      if (!ra) { closeSheet(); return; }
+      if (!(rn >= 1)) { err.textContent = 'Digite quantas aulas tem o novo pacote.'; return; }
+      var desc = 0;
+      ppl(ra).forEach(function (p) { var ex = p.rest < 0 ? -p.rest : 0; desc += ex; p.rest = rn - ex; });
+      ra.total = rn;
+      logAdd(ra, 'pacote', 'Pacote renovado com ' + rn + ' aulas' + (desc ? ' (' + desc + ' além do pacote descontadas)' : ''));
+      closeSheet(); save(); return;
+    }
+    if (editing.kind === 'dupla') {
+      var n0 = f.n0.value.trim(), n1 = f.n1.value.trim();
+      var dv = [Math.round(num(f.r0.value)), Math.round(num(f.r1.value))], dt = Math.round(num(f.total.value));
+      if (!n0 || !n1) { err.textContent = 'Digite o nome das duas pessoas.'; return; }
+      if (dv.some(isNaN) || isNaN(dt) || dt < 0) { err.textContent = 'Digite as aulas restantes de cada um e o total do pacote.'; return; }
+      dt = Math.max(dt, dv[0], dv[1]);
+      var da = editing.id ? byId(S.aulas, editing.id) : null;
+      if (da && da.pessoas) {
+        var dch = pacoteDiff(da, dv, dt);
+        da.pessoas[0].nome = n0; da.pessoas[1].nome = n1;
+        da.pessoas[0].rest = dv[0]; da.pessoas[1].rest = dv[1];
+        da.total = dt; da.nome = n0 + ' + ' + n1; da.obs = f.obs.value.trim();
+        if (dch) logAdd(da, 'ajuste', dch);
+      } else {
+        S.aulas.push({ id: uid(), nome: n0 + ' + ' + n1, total: dt, obs: f.obs.value.trim(),
+          pessoas: [{ id: uid(), nome: n0, rest: dv[0] }, { id: uid(), nome: n1, rest: dv[1] }],
+          log: [{ id: uid(), t: 'ajuste', d: todayISO(), txt: 'Cadastrados com ' + dv[0] + ' e ' + dv[1] + ' de ' + dt }] });
+      }
+      closeSheet(); save(); return;
+    }
+    var nome = f.nome.value.trim();
+    if (!nome) { err.textContent = 'Digite o nome.'; return; }
+    var k = editing.kind, id = editing.id;
+    if (k === 'cobranca') {
+      var dia = Math.round(num(f.dia.value)), valor = num(f.valor.value);
+      if (!(dia >= 1 && dia <= 31)) { err.textContent = 'O dia do vencimento vai de 1 a 31.'; return; }
+      if (!(valor >= 0)) { err.textContent = 'Digite o valor em reais.'; return; }
+      var it = id ? byId(S.cobrancas, id) : null;
+      if (it) {
+        it.nome = nome; it.dia = dia; it.obs = f.obs.value.trim();
+        if (valor !== valorEm(it)) setValor(it, valor, !(f.escopo && f.escopo.value === 'from'));
+      } else {
+        var hk = monthKey(), hh = {}; hh[hk] = valor;
+        S.cobrancas.push({ id: uid(), nome: nome, dia: dia, valor: valor, obs: f.obs.value.trim(), desde: hk, hist: hh });
+      }
+    } else if (k === 'gasto') {
+      var v = num(f.valor.value);
+      if (!(v >= 0)) { err.textContent = 'Digite o valor em reais.'; return; }
+      var gt = id ? byId(S.gastos, id) : null;
+      if (gt) {
+        gt.nome = nome;
+        if (v !== valorEm(gt)) setValor(gt, v, !(f.escopo && f.escopo.value === 'from'));
+      } else {
+        var gk = monthKey(), gh = {}; gh[gk] = v;
+        S.gastos.push({ id: uid(), nome: nome, valor: v, desde: gk, hist: gh });
+      }
+    } else {
+      var rest = Math.round(num(f.r0.value)), total = Math.round(num(f.total.value));
+      if (isNaN(rest) || isNaN(total) || total < 0) { err.textContent = 'Digite as aulas restantes e o total do pacote.'; return; }
+      var at = id ? byId(S.aulas, id) : null;
+      total = Math.max(total, rest);
+      if (at) {
+        var ch = pacoteDiff(at, [rest], total);
+        at.nome = nome; at.obs = f.obs.value.trim(); at.rest = rest; at.total = total;
+        if (ch) logAdd(at, 'ajuste', ch);
+      } else {
+        S.aulas.push({ id: uid(), nome: nome, rest: rest, total: total, obs: f.obs.value.trim(), log: [{ id: uid(), t: 'ajuste', d: todayISO(), txt: 'Cadastrado com ' + rest + ' de ' + total }] });
+      }
+    }
+    closeSheet(); save();
+  }
+
+  /* ---------- eventos ---------- */
+  function byId(arr, id) { return arr.filter(function (x) { return x.id === id; })[0]; }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-act]');
+    if (!t) { if (e.target.id === 'scrim') closeSheet(); return; }
+    var act = t.getAttribute('data-act'), id = t.getAttribute('data-id');
+    if (act === 'tab') { tab = t.getAttribute('data-tab'); try { localStorage.setItem('elevare-tab', tab); } catch (x) {} render(); window.scrollTo(0, 0); }
+    else if (act === 'prev') { M--; if (M < 0) { M = 11; Y--; } render(); }
+    else if (act === 'next') { M++; if (M > 11) { M = 0; Y++; } render(); }
+    else if (act === 'pago') {
+      var key = monthKey(), list = (S.pagos[key] || []).slice(), i = list.indexOf(id);
+      if (i >= 0) list.splice(i, 1); else list.push(id);
+      S.pagos[key] = list; save();
+    }
+    else if (act === 'dec') { var a = byId(S.aulas, id); if (a) { giveClass(a, [t.getAttribute('data-p') || a.id]); save(); } }
+    else if (act === 'inc') { var b = byId(S.aulas, id); if (b) { undoClass(b, t.getAttribute('data-p') || b.id); save(); } }
+    else if (act === 'both') { var bo = byId(S.aulas, id); if (bo) { giveClass(bo, ppl(bo).map(function (p) { return p.id; })); save(); } }
+    else if (act === 'new-dupla') openSheet('dupla');
+    else if (act === 'renovar') openPacote(id, 'renovar');
+    else if (act === 'edit-pacote') openPacote(id);
+    else if (act === 'hist') openHist(id);
+    else if (act === 'hist-add') {
+      var ha = byId(S.aulas, editing && editing.id), hd = $('f-hdata').value, hq = $('f-hquem');
+      if (ha && hd) {
+        giveClass(ha, !hq || hq.value === 'all' ? ppl(ha).map(function (p) { return p.id; }) : [hq.value], hd);
+        save(); openHist(ha.id);
+      }
+    }
+    else if (act === 'hist-del') {
+      var da = byId(S.aulas, editing && editing.id), lid = t.getAttribute('data-lid');
+      if (da) {
+        var lg = (da.log || []).filter(function (l) { return l.id === lid; })[0];
+        if (lg && lg.t === 'aula') {
+          var back = lg.ps || [da.id];
+          ppl(da).forEach(function (p) { if (back.indexOf(p.id) >= 0 && p.rest < da.total) p.rest++; });
+        }
+        da.log = (da.log || []).filter(function (l) { return l.id !== lid; });
+        save(); openHist(da.id);
+      }
+    }
+    else if (act === 'edit-valor') openValor(t.getAttribute('data-k'), id);
+    else if (act === 'new-cobranca') openSheet('cobranca');
+    else if (act === 'new-gasto') openSheet('gasto');
+    else if (act === 'new-aula') openSheet('aula');
+    else if (act === 'edit-cobranca') openSheet('cobranca', id);
+    else if (act === 'edit-gasto') openSheet('gasto', id);
+    else if (act === 'edit-aula') { var ea = byId(S.aulas, id); openSheet(ea && ea.pessoas ? 'dupla' : 'aula', id); }
+    else if (act === 'close') closeSheet();
+    else if (act === 'encerrar') {
+      var ek = editing.kind, eid2 = editing.id;
+      var tgt = byId(ek === 'cobranca' ? S.cobrancas : S.gastos, eid2);
+      if (tgt) tgt.ate = shiftKey(monthKey(), -1);
+      closeSheet(); save();
+    }
+    else if (act === 'excluir') {
+      if (!t.classList.contains('armed')) { t.classList.add('armed'); t.textContent = 'Toque de novo para excluir'; return; }
+      var k = editing.kind, eid = editing.id;
+      if (k === 'cobranca') S.cobrancas = S.cobrancas.filter(function (x) { return x.id !== eid; });
+      else if (k === 'gasto') S.gastos = S.gastos.filter(function (x) { return x.id !== eid; });
+      else S.aulas = S.aulas.filter(function (x) { return x.id !== eid; });
+      closeSheet(); save();
+    }
+  });
+  $('sheet').addEventListener('submit', submitSheet);
+  $('sheet').addEventListener('change', function (e) {
+    var el = e.target, lid = el.getAttribute && el.getAttribute('data-lid');
+    if (!lid || !editing || editing.kind !== 'hist' || !el.value) return;
+    var a = byId(S.aulas, editing.id);
+    var lg = a && (a.log || []).filter(function (l) { return l.id === lid; })[0];
+    if (lg) { lg.d = el.value; save(); }
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('scrim').hidden) closeSheet(); });
+
+
+  $('bk-export').addEventListener('click', function () {
+    var blob = new Blob([JSON.stringify(S, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'elevare-backup-' + todayISO() + '.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    $('bk-msg').textContent = 'Backup exportado.';
+  });
+  $('bk-import').addEventListener('change', function (e) {
+    var file = e.target.files && e.target.files[0];
+    if (!file) return;
+    var r = new FileReader();
+    r.onload = function () {
+      try {
+        var d = JSON.parse(r.result);
+        if (!d || (!d.aulas && !d.cobrancas && !d.gastos)) throw new Error('x');
+        S = normalize(d); save();
+        $('bk-msg').textContent = 'Backup importado.';
+      } catch (x) { $('bk-msg').textContent = 'Esse arquivo não é um backup válido.'; }
+    };
+    r.readAsText(file); e.target.value = '';
+  });
+  render();
+  init();
+})();
+</script>
+
+</body>
+</html>
